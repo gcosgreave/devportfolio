@@ -1,7 +1,7 @@
 {
-  "name": "devportfolio-template",
+  "name": "gavincosgreave-portfolio",
   "version": "1.1.3",
-  "description": "",
+  "description": "Portfolio site for gcosgreave front-end developer",
   "main": "js/scripts.js",
   "scripts": {
     "watch": "gulp watch"
@@ -14,7 +14,7 @@
     "coding",
     "dev"
   ],
-  "author": "Ryan Fitzgerald",
+  "author": "Gavin Cosgreave",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
