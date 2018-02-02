@@ -94,4 +94,28 @@
         });
     });
 
+    // Get code school badges 
+
+    $.get("http://www.codeschool.com/users/gcosgreave.json", function(data){
+        var completedCourses = data.courses.completed;
+        var inProgress = data.courses.in_progress;
+        console.log(inProgress);
+        
+        for(var i = 0; i < completedCourses.length; i++){
+            var completedCourseBadge = completedCourses[i].badge;
+            console.log(completedCourses[i].badge);
+            $('<li />').addClass('course').appendTo('.courses-completed').css('background-image', 'url(' + completedCourseBadge + ')')
+        }
+        
+        for (var i = 0; i < inProgress.length; i++) {
+            var inProgressCourseBadge = inProgress[i].badge;
+            console.log('------------------------------------');
+            console.log(inProgress);
+            console.log('------------------------------------');
+            
+            $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')')
+        }
+    });
+
+
 })(jQuery);
