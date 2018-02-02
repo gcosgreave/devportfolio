@@ -45,8 +45,8 @@ $background-alt: #f2f2f5;
 $border: #dcd9d9;
 
 // Define text colors
-$heading: #374054;
-$text: #74808a;
+$heading: #646464;
+$text: #313131;
 
 /*
     ---------------------
@@ -538,7 +538,7 @@ footer {
 .vtimeline-point {
     position: relative;
     display: block;
-    vertical-align: top;
+    // vertical-align: top;
     margin-bottom: 30px;
 }
 
@@ -926,12 +926,12 @@ footer {
             text-align: left;
         }
     }
-
 }
+
 
 // Small Devices
 @media only screen and (max-width : 768px) {
-
+    
     header {
         position: fixed;
         display: none;
@@ -940,52 +940,52 @@ footer {
         bottom: 0;
         height: 100%;
     }
-
+    
     #mobile-menu-open, #mobile-menu-close {
         display: block;
     }
-
+    
     #menu {
         height: 100%;
         overflow-y: auto;
         box-shadow: none;
         border-radius: 0;
         width: 100%;
-
+        
         li {
             display: block;
             margin-bottom: 10px;
         }
     }
-
+    
     #lead-content {
         h1 {
             font-size: 2em;
         }
-
+        
         h2 {
             font-size: 1.3em;
         }
-
+        
         a {
             padding: 10px 20px;
         }
     }
-
+    
     #lead-down {
         display: none;
     }
-
+    
     .education-block {
         h3, span {
             float: none;
         }
     }
-
+    
     .project-image {
         display: none;
     }
-
+    
     .project-info {
         position: relative;
         margin: 0;
@@ -993,33 +993,53 @@ footer {
         top: auto;
         transform: none;
     }
-
+    
     footer {
         text-align: center;
     }
-
+    
     .social {
         text-align: center;
     }
-
+    
 }
 
 // Extra Small Devices
 @media only screen and (max-width : 480px) {
-
+    
     #lead-content {
         h1 {
             font-size: 1.5em;
         }
-
+        
         h2 {
             font-size: 1em;
         }
-
+        
         a {
             font-size: 0.9em;
             padding: 5px 10px;
         }
     }
+    
+}
 
+/*
+    -------------------------------
+    ----- 13. Profile Image -----
+    -------------------------------
+*/
+
+#profile-image {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    .profile-img {
+        border-radius: 50% 50%;
+        height: 100px;
+        position: absolute;
+        top: -50px;
+        width: 100px;
+        z-index: 1;
+    }
 }
