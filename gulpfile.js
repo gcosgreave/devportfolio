@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 var wait = require('gulp-wait');
 var rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
+var concat = require('gulp-concat');
 
 gulp.task('scripts', function() {
     return gulp.src('js/scripts.js')
@@ -24,9 +25,10 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function () {
-    return gulp.src('./scss/styles.scss')
+    return gulp.src('./scss/main.scss')
         .pipe(wait(250))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(concat('styles.css'))
         .pipe(gulp.dest('./css'));
 });
 
