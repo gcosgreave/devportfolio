@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Portfolio</title>
+    <title>GCosgreave Portfolio Site | Web Development | Front-end Developer</title>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +51,7 @@
         <div id="lead-content">
             <h1>Gavin Cosgreave</h1>
             <h2>Front-end Developer</h2>
-            <a href="#" class="btn-rounded-white">Download CV</a>
+            <a href="/downloads/cvs/gavin-cosgreave-cv.pdf" download="gavin-cosgreave-cv.pdf" class="btn-rounded-white">Download My CV</a>
         </div>
         <!-- End #lead-content -->
 
@@ -73,7 +74,7 @@
                 </div>
                 <div class="col-md-8">
                     <p>
-                        I'm Gavin! I currently work at Connect-Auto, I am based in the UK and have been doing this for 10 years now! yikes. 
+                        I'm Gavin! I currently work at Connect-Auto, I am based in the UK and have been doing this for 10 years now! yikes. At Connect-Auto I work on car dealer website's and used car locators. I have been lucky enough to work with Seat, Ferrari, Mclaren and Jaguar Land Rover.
                     </p>
                 </div>
             </div>
@@ -87,16 +88,7 @@
             <div data-date="December 2015 – Current">
                 <h3>Connect-Auto</h3>
                 <h4>Front-end Developer</h4>
-                <p>
-                    Working with clients such as: 
-                </p>
-                <ul>
-                    <li>Seat</li>
-                    <li>Ferrari</li>
-                    <li>Mercedes</li>
-                    <li>Kia</li>
-                </ul>
-                <p>I have been lucky enough to work on these projects from the get go. Whether in Angular or a PHP project based off our own custom CMS. I have seen these projects through to the end. They have been delivered on time and in such a way that makes maintainence a breeze.</p>
+                <p>Whether in Angular or a PHP project based off our own custom CMS. I have seen these projects through to the end. They have been delivered on time and in such a way that makes maintainence a breeze. Working in agile environments with daily stand ups and bi-weekly sprints.</p>
             </div>
 
             <div data-date="December 2013 – December 2014">
@@ -119,7 +111,10 @@
     <!-- End #experience -->
 
     <div id="education">
-        <h2 class="heading">Education</h2>
+        <h2 class="heading">Always learning..</h2>
+        <p>Here is a few courses that I have completed or are currently doing.</p>
+
+
         <div class="education-block">
             <h3>University of Ottawa</h3>
             <span class="education-date">Sept 2016 - Sept 2017</span>
@@ -150,21 +145,48 @@
     </div>
     <!-- End #education -->
 
-    <div id="projects" class="background-alt">
+    <div id="learning" class="optional-section background-alt">
+        <h2 class="heading">Always Learning</h2>
+    
+        <div class="optional-section-block">
+            <h3>Completed Code School Courses</h3>
+            <p>
+                Here is a few courses that I have completed or are currently doing...
+            </p>
+            <ul class="courses-completed">
+                <!-- Completed Courses go here -->
+            </ul>
+        </div>
+        <div class="optional-section-block">
+            <h3>Currently in progress</h3>
+            <p>
+                Some courses I haven't quite finished yet but I am working my way through...
+            </p>
+            <ul class="courses-progress">
+                <!-- Progress Courses go here -->
+            </ul>
+        </div>
+        <!-- End .optional-section-block -->
+    
+    </div>
+    <!-- End .optional-section -->
+
+    <div id="projects">
         <h2 class="heading">Projects</h2>
         <div class="container">
             <div class="row">
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/project.jpg" />
+                        <img src="images/seat.jpg" />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
-                        <h3>Project Name Here</h3>
+                        <h3>SEAT </h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                            An Angular project aimed at a new car buying experience. Buyers can go online to find their perfect car or use touch screen kiosks at SEAT’s first UK
+                            retail store. SEAT then roled this out into a further store.
                         </p>
-                        <a href="#">View Project</a>
+                        <a href="https://seat-store.co.uk/" target="tab">View Project</a>
                     </div>
                     <!-- End .project-info -->
                 </div>
@@ -176,7 +198,7 @@
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
-                        <h3>Project Name Here</h3>
+                        <h3>Ferrari Preowned</h3>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
                         </p>
@@ -190,44 +212,35 @@
     </div>
     <!-- End #projects -->
 
-    <div id="skills">
+    <div id="skills" class="background-alt">
         <h2 class="heading">Skills</h2>
         <ul>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
+            <li>HTML5</li>
+            <li>Javascript</li>
+            <li>JQuery</li>
+            <li>BEM</li>
+            <li>Underscore.js</li>
+            <li>Angular</li>
+            <li>CSS3</li>
+            <li>SASS</li>
+            <li>Gulp</li>
+            <li>Grunt</li>
             <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
+            <li>Git</li>
+            <li>Linux</li>
+            <li>OSX</li>
+            <li>Agile</li>
+            <li>Scrum</li>
+            <li>UX/UI</li>
         </ul>
     </div>
     <!-- End #skills -->
 
     <div id="contact">
-        <h2>Get in Touch</h2>
+        <h2>Come say hello</h2>
         <div id="contact-form">
             <form method="POST" action="https://formspree.io/gcosgreave@me.com">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="hidden" name="_subject" value="Hey! someone wants to have a chat." />
                 <input type="email" name="_replyto" placeholder="Your email" required>
                 <textarea name="message" placeholder="Your message" required></textarea>
                 <button type="submit">Send</button>
@@ -253,19 +266,13 @@
                 <div class="col-sm-5 social">
                     <ul>
                         <li>
-                            <a href="https://github.com/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            <a href="https://github.com/gcosgreave/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="https://stackoverflow.com/" target="_blank"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
+                            <a href="https://stackoverflow.com/users/6774835/gcosgreave" target="_blank"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/gcosgreave" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </div>
