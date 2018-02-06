@@ -152,6 +152,15 @@ header {
     animation-timing-function: ease;
     animation-duration: 0.75s;
 
+    @include breakpoint (sm) {
+        position: fixed;
+        display: none;
+        z-index: 999;
+        animation: none;
+        bottom: 0;
+        height: 100%;
+    }
+
     ul {
         display: inline-block;
         background: $background;
@@ -195,7 +204,27 @@ header {
 }
 
 #menu {
+    @include breakpoint (sm) {
+        height: 100%;
+        overflow-y: auto;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+    }
     &.active {
+        display: block;
+    }
+    li {
+        @include breakpoint (sm) {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+#mobile-menu-open,
+#mobile-menu-close {
+    @include breakpoint (sm) {
         display: block;
     }
 }
@@ -237,6 +266,10 @@ header {
 
 footer {
     padding: 50px 0;
+
+    @include breakpoint (md) {
+        text-align: center;
+    }
 }
 
 .copyright {
@@ -289,6 +322,10 @@ footer {
         &:hover {
             color: $base-color;
         }
+    }
+
+    @include breakpoint (sm) {
+        text-align: center;
     }
 }
 
@@ -354,6 +391,13 @@ footer {
     background-size: cover;
     padding: 15px;
     overflow: hidden;
+
+    @include breakpoint(md) {
+        height: auto;
+        min-height: auto;
+        max-height: auto;
+        padding: 100px 15px;
+    }
 }
 
 #lead-content {
@@ -363,6 +407,13 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+
+    @include breakpoint (md) {
+        position: relative;
+        transform: none;
+        left: auto;
+        top: auto;
+    }
 
     h1, h2 {
         margin: 0;
@@ -375,6 +426,18 @@ footer {
         text-transform: uppercase;
         letter-spacing: 0.05em;
         line-height: 0.9em;
+
+        @include breakpoint (xs) {
+            font-size: 1.5em;
+        }
+
+        @include breakpoint (sm) {
+            font-size: 2em;
+        }
+
+        @include breakpoint (md) {
+            font-size: 3em;
+        }
     }
 
     h2 {
@@ -382,6 +445,25 @@ footer {
         font-weight: 500;
         font-size: 2.25em;
         margin-bottom: 15px;
+
+        @include breakpoint (xs) {
+            font-size: 1em;
+        }
+
+        @include breakpoint (sm) {
+            font-size: 1.3em;
+        }
+
+        @include breakpoint (md) {
+            font-size: 1.75em;
+        }
+    }
+
+    a {
+        
+        @include breakpoint (sm) {
+            padding: 10px 20px;
+        }
     }
 }
 
@@ -423,6 +505,9 @@ footer {
         animation-iteration-count: infinite;
         padding-top: 5px;;
     }
+    @include breakpoint (sm) {
+        display: none;
+    }
 }
 
 @keyframes pulsate {
@@ -449,6 +534,10 @@ footer {
     padding: 75px 15px;
     border-bottom: 1px solid $border;
 
+    @include breakpoint (md) {
+        text-align: center;
+    }
+
     h2 {
         color: $heading;
     }
@@ -456,6 +545,10 @@ footer {
     p {
         color: $text;
         margin: 0;
+
+        @include breakpoint (md) {
+            text-align: left;
+        }
     }
 }
 
@@ -491,6 +584,10 @@ footer {
         width: 3px;
         background: $base-color;
         z-index: 0;
+
+        @include breakpoint (sm) {
+            left: 23px;
+        }
     }
 
     &:after {
@@ -502,6 +599,10 @@ footer {
         background: linear-gradient(to bottom, $base-color, rgba($base-color, 0));
         top: 100%;
         left: 303px;
+
+        @include breakpoint (sm) {
+            left: 23px;
+        }
     }
 }
 
@@ -512,6 +613,10 @@ footer {
     padding: 15px;
     border-radius: 3px;
     text-align: left;
+
+    @include breakpoint (sm) {
+        margin-left: 70px;
+    }
 
     h3 {
         font-size: 1.5em;
@@ -553,6 +658,10 @@ footer {
     z-index: 99;
     margin-left: 280px;
 
+    @include breakpoint (sm) {
+        margin-left: 0;
+    }
+
     i {
         display: block;
         font-size: 2em;
@@ -568,6 +677,15 @@ footer {
     top: 10px;
     font-weight: 300;
     color: #374054;
+
+    @include breakpoint (sm) {
+        width: auto;
+        text-align: left;
+        position: relative;
+        margin-bottom: 15px;
+        display: block;
+        margin-left: 70px;
+    }
 }
 
 /*
@@ -593,6 +711,12 @@ footer {
     padding: 15px;
     border: 1px solid $border;
     text-align: left;
+
+    h3, span {
+        @include breakpoint (sm) {
+            float: none;
+        }
+    }
 
     h3 {
         font-weight: 500;
@@ -652,6 +776,10 @@ footer {
 
 .project-image {
     float: left;
+
+    @include breakpoint (sm) {
+        display: none;
+    }
 }
 
 .project-info {
@@ -660,6 +788,14 @@ footer {
     transform: translateY(-50%);
     margin-left: 300px;
     padding: 15px;
+
+    @include breakpoint (sm) {
+        position: relative;
+        margin: 0;
+        padding: 30px 15px;
+        top: auto;
+        transform: none;
+    }
 
     h3 {
         font-size: 1.5em;
@@ -870,62 +1006,23 @@ footer {
 
     #experience-timeline {
         &:before, &:after {
-            left: 23px;
+            
         }
 
     }
 
     .vtimeline-date {
-        width: auto;
-        text-align: left;
-        position: relative;
-        margin-bottom: 15px;
-        display: block;
-        margin-left: 70px;
+        
     }
 
     .vtimeline-icon {
-        margin-left: 0;
+        
     }
 
     .vtimeline-content {
-        margin-left: 70px;
+        
     }
 
-}
-
-// Medium Devices
-@media only screen and (max-width : 992px) {
-
-    #lead {
-        height: auto;
-        min-height: auto;
-        max-height: auto;
-        padding: 100px 15px;
-    }
-
-    #lead-content {
-        position: relative;
-        transform: none;
-        left: auto;
-        top: auto;
-
-        h1 {
-            font-size: 3em;
-        }
-
-        h2 {
-            font-size: 1.75em;
-        }
-    }
-
-    #about {
-        text-align: center;
-
-        p {
-            text-align: left;
-        }
-    }
 }
 
 
@@ -933,73 +1030,59 @@ footer {
 @media only screen and (max-width : 768px) {
     
     header {
-        position: fixed;
-        display: none;
-        z-index: 999;
-        animation: none;
-        bottom: 0;
-        height: 100%;
+        
     }
     
     #mobile-menu-open, #mobile-menu-close {
-        display: block;
+        
     }
     
     #menu {
-        height: 100%;
-        overflow-y: auto;
-        box-shadow: none;
-        border-radius: 0;
-        width: 100%;
+        
         
         li {
-            display: block;
-            margin-bottom: 10px;
+            
         }
     }
     
     #lead-content {
         h1 {
-            font-size: 2em;
+            
         }
         
         h2 {
-            font-size: 1.3em;
+            
         }
         
         a {
-            padding: 10px 20px;
+            
         }
     }
     
     #lead-down {
-        display: none;
+        
     }
     
     .education-block {
         h3, span {
-            float: none;
+            
         }
     }
     
     .project-image {
-        display: none;
+        
     }
     
     .project-info {
-        position: relative;
-        margin: 0;
-        padding: 30px 15px;
-        top: auto;
-        transform: none;
+        
     }
     
     footer {
-        text-align: center;
+        
     }
     
     .social {
-        text-align: center;
+        
     }
     
 }
@@ -1009,16 +1092,15 @@ footer {
     
     #lead-content {
         h1 {
-            font-size: 1.5em;
+            
         }
         
         h2 {
-            font-size: 1em;
+            
         }
         
         a {
-            font-size: 0.9em;
-            padding: 5px 10px;
+            
         }
     }
     
