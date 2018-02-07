@@ -76,15 +76,19 @@
 
     });
 
-    // Open mobile menu
-    $('#mobile-menu-open').click(function() {
-        $('header, body').addClass('active');
+    // Toggle mobile menu
+    $('.burger-menu-container').click(function() {
+        console.log('------------------------------------');
+        console.log($('header'));
+        console.log('------------------------------------');
+        $(this).toggleClass('active');
+        $('header').toggleClass('active');
     });
 
     // Close mobile menu
-    $('#mobile-menu-close').click(function() {
-        $('header, body').removeClass('active');
-    });
+    // $('#mobile-menu-close').click(function() {
+    //     $('header, body').removeClass('active');
+    // });
 
     // Load additional projects
     $('#view-more-projects').click(function(e){
@@ -99,23 +103,24 @@
     $.get("http://www.codeschool.com/users/gcosgreave.json", function(data){
         var completedCourses = data.courses.completed;
         var inProgress = data.courses.in_progress;
-        console.log(inProgress);
+        // console.log(inProgress);
         
         for(var i = 0; i < completedCourses.length; i++){
             var completedCourseBadge = completedCourses[i].badge;
-            console.log(completedCourses[i].badge);
+            // console.log(completedCourses[i].badge);
             $('<li />').addClass('course').appendTo('.courses-completed').css('background-image', 'url(' + completedCourseBadge + ')')
         }
         
         for (var i = 0; i < inProgress.length; i++) {
             var inProgressCourseBadge = inProgress[i].badge;
-            console.log('------------------------------------');
-            console.log(inProgress);
-            console.log('------------------------------------');
+            // console.log('------------------------------------');
+            // console.log(inProgress);
+            // console.log('------------------------------------');
             
             $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')')
         }
     });
+
 
 
 })(jQuery);

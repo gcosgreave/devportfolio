@@ -34,7 +34,7 @@
 */
 
 // Define base and accent colors
-$base-color: rgb(45, 146, 87);
+$base-color: rgb(113, 177, 230);
 $base-color-hover: darken($base-color, 10%);
 
 // Define background colors
@@ -151,10 +151,12 @@ header {
     animation-iteration-count: 1;
     animation-timing-function: ease;
     animation-duration: 0.75s;
+    transition: opacity 400ms ease-in, visibility 400ms ease-in-out;
 
     @include breakpoint (sm) {
         position: fixed;
-        display: none;
+        opacity: 0;
+        visibility: hidden;
         z-index: 999;
         animation: none;
         bottom: 0;
@@ -194,7 +196,8 @@ header {
     }
 
     &.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 
     &.sticky {
@@ -996,117 +999,6 @@ footer {
 }
 
 /*
-    -----------------------------
-    ----- 12. Media Queries -----
-    -----------------------------
-*/
-
-// Collapse timeline
-@media only screen and (max-width: 750px) {
-
-    #experience-timeline {
-        &:before, &:after {
-            
-        }
-
-    }
-
-    .vtimeline-date {
-        
-    }
-
-    .vtimeline-icon {
-        
-    }
-
-    .vtimeline-content {
-        
-    }
-
-}
-
-
-// Small Devices
-@media only screen and (max-width : 768px) {
-    
-    header {
-        
-    }
-    
-    #mobile-menu-open, #mobile-menu-close {
-        
-    }
-    
-    #menu {
-        
-        
-        li {
-            
-        }
-    }
-    
-    #lead-content {
-        h1 {
-            
-        }
-        
-        h2 {
-            
-        }
-        
-        a {
-            
-        }
-    }
-    
-    #lead-down {
-        
-    }
-    
-    .education-block {
-        h3, span {
-            
-        }
-    }
-    
-    .project-image {
-        
-    }
-    
-    .project-info {
-        
-    }
-    
-    footer {
-        
-    }
-    
-    .social {
-        
-    }
-    
-}
-
-// Extra Small Devices
-@media only screen and (max-width : 480px) {
-    
-    #lead-content {
-        h1 {
-            
-        }
-        
-        h2 {
-            
-        }
-        
-        a {
-            
-        }
-    }
-    
-}
-
-/*
     -------------------------------
     ----- 13. Profile Image -----
     -------------------------------
@@ -1125,3 +1017,59 @@ footer {
         z-index: 1;
     }
 }
+
+/*
+    -------------------------------
+    ----- 14. Burger Menu ---------
+    -------------------------------
+*/
+
+#burger-menu {
+    display: flex;
+    position: absolute;
+    z-index: 9999;
+    right: 0;
+    padding: 15px;
+    .burger-menu-container {
+        position: relative;
+        height: 30px;
+        width: 30px;
+        transition: transform 100ms ease-in; 
+        .burger-item {
+            background-color: #000000;
+            height: 3px;
+            position: absolute;
+            width: 30px;
+            transform: rotate(0);
+            transition: top 400ms ease-out, transform 300ms ease-in 200ms, opacity 200ms ease-out;
+    
+            &:nth-child(1) {
+                top: 0;
+            }
+            &:nth-child(2) {
+                top: 10px;
+            }
+            &:nth-child(3) {
+                top: 20px;
+            }
+        }
+        &.active {
+            transform: rotate(90deg);
+            .burger-item {
+                // transition: transform 100ms ease-in 500ms;
+                &:nth-child(1){
+                    top: 10px;
+                    transform: rotate(45deg);
+                }
+                &:nth-child(2){
+                    top: 10px;
+                    transform: rotate(-45deg);
+                }
+                &:nth-child(3){
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
