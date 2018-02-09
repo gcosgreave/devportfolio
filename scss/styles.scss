@@ -198,6 +198,7 @@ header {
     &.active {
         opacity: 1;
         visibility: visible;
+        overflow-x: hidden;
     }
 
     &.sticky {
@@ -206,21 +207,33 @@ header {
     }
 }
 
-#menu {
+.menu-list {
     @include breakpoint (sm) {
         height: 100%;
         overflow-y: auto;
         box-shadow: none;
         border-radius: 0;
         width: 100%;
+        padding-top: 80px;
     }
-    &.active {
-        display: block;
-    }
-    li {
+    .menu-item {
         @include breakpoint (sm) {
             display: block;
             margin-bottom: 10px;
+            font-size: 1.4em;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 800ms ease-in,
+            visibility 800ms ease-in,
+            transform 800ms cubic-bezier(0.53, -0.9, 0.66, 1.73);
+            transform: translateX(-100%);
+        }
+        &.menu-item--active {
+            @include breakpoint (sm) {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(0);
+            }
         }
     }
 }
@@ -1036,7 +1049,7 @@ footer {
         width: 30px;
         transition: transform 100ms ease-in; 
         .burger-item {
-            background-color: #000000;
+            background-color: #313131;
             height: 3px;
             position: absolute;
             width: 30px;
