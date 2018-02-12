@@ -101,11 +101,11 @@ var gcui = {
             $(this).toggleClass('active');
             $('header').toggleClass('active');
             if ($(this).hasClass('active')) {
-                $('.menu-item').each(function (index, element) {                    
+                $('.menu-item').each(function (index, element) {
                     iterateAddClass(element, 'menu-item--active', index, 150);
                 });
             } else {
-                $('.menu-item').each(function( index, element ) {                    
+                $('.menu-item').each(function( index, element ) {
                     $(this).removeClass('menu-item--active')
                 });
             }
@@ -124,13 +124,13 @@ var gcui = {
         // Get code school badges 
         $.get("http://www.codeschool.com/users/gcosgreave.json", function(data){
             var completedCourses = data.courses.completed;
-            var inProgress = data.courses.in_progress;        
-            
+            var inProgress = data.courses.in_progress;
+
             for(var i = 0; i < completedCourses.length; i++){
-                var completedCourseBadge = completedCourses[i].badge;            
+                var completedCourseBadge = completedCourses[i].badge;
                 $('<li />').addClass('course').appendTo('.courses-completed').css('background-image', 'url(' + completedCourseBadge + ')')
             }
-            
+
             for (var i = 0; i < inProgress.length; i++) {
                 var inProgressCourseBadge = inProgress[i].badge;
                 $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')')
