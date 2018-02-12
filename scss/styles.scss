@@ -39,7 +39,7 @@ $base-color-hover: darken($base-color, 10%);
 
 // Define background colors
 $background: #fff;
-$background-alt: #f2f2f5;
+$background-alt: #f1f1f1;
 
 // Define border colors
 $border: #dcd9d9;
@@ -85,7 +85,7 @@ $text: #313131;
 */
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 16px;
 
     &.active {
@@ -400,7 +400,7 @@ footer {
 
 #lead {
     position: relative;
-    height: 100vh;
+    height: 30vh;
     min-height: 500px;
     max-height: 1080px;
     background: url(../images/code-and-coffee.jpg);
@@ -1017,10 +1017,13 @@ footer {
     -------------------------------
 */
 
-#profile-image {
-    display: flex;
+#profile-image {    
     position: relative;
     justify-content: center;
+    display: none;
+    @include breakpoint (sm) {
+        display: flex;
+    }
     .profile-img {
         border-radius: 50% 50%;
         height: 100px;
@@ -1038,11 +1041,14 @@ footer {
 */
 
 #burger-menu {
-    display: flex;
+    display: none;
     position: absolute;
     z-index: 9999;
     right: 0;
     padding: 15px;
+    @include breakpoint (sm) {
+        display: flex;
+    }
     .burger-menu-container {
         position: relative;
         height: 30px;
