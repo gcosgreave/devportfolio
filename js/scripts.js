@@ -88,43 +88,26 @@ var gcui = {
     menu: function() {
 
         var menuContainer = $('.burger-menu-container');
-        
-        function iterateAddClass(element, classname, i, duration){
+
+        function iterateAddClass(element, classname, index, duration){
             setTimeout(function(){
-                element.classList.add(classname);    
-            }, duration * i);
+                element.classList.add(classname);
+            }, duration * index);
         }
-        
-        function iterateRemoveClass(element, classname, i, duration){
-            setTimeout(function(){
-                element.classList.remove(classname);    
-            }, duration * i);
-        }
-        
+
         // Toggle mobile menu
         $(menuContainer).click(function() {
-            var menuItems = $('.menu-item');            
+            var menuItems = $('.menu-item');
             $(this).toggleClass('active');
             $('header').toggleClass('active');
-            console.log('------------------------------------');
-            console.log(menuItems, 'items');
-            console.log('------------------------------------');
-            if ($(this).hasClass('active')) {                
-                for (var i = 0; i < menuItems.length; i++) {
-                    var element = menuItems[i];
-                    iterateAddClass(element, 'menu-item--active', i, 150);                    
-                }
-            } else {                               
-                console.log('------------------------------------');
-                console.log(menuItems, 'items-rev');
-                console.log('------------------------------------');
-                for (var i = menuItems.length; i >= 0; i--) {
-                    var element = menuItems[i];
-                    console.log('------------------------------------');
-                    console.log(element, i);
-                    console.log('------------------------------------');
-                    iterateRemoveClass(element, 'menu-item--active', i, 150);
-                }
+            if ($(this).hasClass('active')) {
+                $('.menu-item').each(function (index, element) {                    
+                    iterateAddClass(element, 'menu-item--active', index, 150);
+                });
+            } else {
+                $('.menu-item').each(function( index, element ) {                    
+                    $(this).removeClass('menu-item--active')
+                });
             }
         });
     }, 
