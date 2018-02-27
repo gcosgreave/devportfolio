@@ -121,26 +121,28 @@ var gcui = {
         });
     },
     getCourses: function () {
-        // Get code school badges 
-        $.get("http://www.codeschool.com/users/gcosgreave.json", function(data){
-            var completedCourses = data.courses.completed;
-            var inProgress = data.courses.in_progress;
 
-            for(var i = 0; i < completedCourses.length; i++){
-                var completedCourseBadge = completedCourses[i].badge;
-                $('<li />').addClass('course').appendTo('.courses-completed').css('background-image', 'url(' + completedCourseBadge + ')')
+        $.ajax({
+            url: 'https://www.codeschool.com/users/gcosgreave.json',
+            dataType: 'jsonp',
+            success: function(data) {
+                completedCourses(data.courses.completed)
+                progressCourses(data.courses.in_progress)                
+            },
+        });
+
+        function completedCourses(courses){            
+            for (var i = 0; i < courses.length; i++){
+                var coursesBadge = courses[i].badge;
+                $('<li />').addClass('course').appendTo('.courses-completed').css('background-image', 'url(' + coursesBadge + ')')
             }
-
-            for (var i = 0; i < inProgress.length; i++) {
-                var inProgressCourseBadge = inProgress[i].badge;
+        }
+        function progressCourses(courses){
+            for (var i = 0; i < courses.length; i++) {
+                var inProgressCourseBadge = courses[i].badge;
                 $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')')
             }
-        }).fail(function(){
-            var courseText = $('.course-text').length
-            $('.course-text').replaceWith("<p>Hmm, sorry the courses don't seem to be loading at the moment.</p>")
-        });
+        }
     }
 
 };
-
-    
