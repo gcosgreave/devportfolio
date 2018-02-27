@@ -34,19 +34,19 @@
 */
 
 // Define base and accent colors
-$base-color: #3498db;
+$base-color: rgb(113, 177, 230);
 $base-color-hover: darken($base-color, 10%);
 
 // Define background colors
 $background: #fff;
-$background-alt: #f2f2f5;
+$background-alt: #f1f1f1;
 
 // Define border colors
 $border: #dcd9d9;
 
 // Define text colors
-$heading: #374054;
-$text: #74808a;
+$heading: #646464;
+$text: #313131;
 
 /*
     ---------------------
@@ -151,6 +151,17 @@ header {
     animation-iteration-count: 1;
     animation-timing-function: ease;
     animation-duration: 0.75s;
+    transition: opacity 400ms ease-in, visibility 400ms ease-in-out;
+
+    @include breakpoint (sm) {
+        position: fixed;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 999;
+        animation: none;
+        bottom: 0;
+        height: 100%;
+    }
 
     ul {
         display: inline-block;
@@ -185,7 +196,9 @@ header {
     }
 
     &.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+        overflow-x: hidden;
     }
 
     &.sticky {
@@ -194,8 +207,40 @@ header {
     }
 }
 
-#menu {
-    &.active {
+.menu-list {
+    @include breakpoint (sm) {
+        height: 100%;
+        overflow-y: auto;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        padding-top: 80px;
+    }
+    .menu-item {
+        @include breakpoint (sm) {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 800ms ease-in,
+            visibility 800ms ease-in,
+            transform 800ms cubic-bezier(0.53, -0.9, 0.66, 1.73);
+            transform: translateX(-100%);
+        }
+        &.menu-item--active {
+            @include breakpoint (sm) {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(0);
+            }
+        }
+    }
+}
+
+#mobile-menu-open,
+#mobile-menu-close {
+    @include breakpoint (sm) {
         display: block;
     }
 }
@@ -237,6 +282,10 @@ header {
 
 footer {
     padding: 50px 0;
+
+    @include breakpoint (md) {
+        text-align: center;
+    }
 }
 
 .copyright {
@@ -289,6 +338,10 @@ footer {
         &:hover {
             color: $base-color;
         }
+    }
+
+    @include breakpoint (sm) {
+        text-align: center;
     }
 }
 
@@ -347,13 +400,20 @@ footer {
 
 #lead {
     position: relative;
-    height: 100vh;
+    height: 30vh;
     min-height: 500px;
     max-height: 1080px;
-    background: url(../images/lead-bg.jpg);
+    background: url(../images/code-and-coffee.jpg);
     background-size: cover;
     padding: 15px;
     overflow: hidden;
+
+    @include breakpoint(md) {
+        height: auto;
+        min-height: auto;
+        max-height: auto;
+        padding: 100px 15px;
+    }
 }
 
 #lead-content {
@@ -364,6 +424,13 @@ footer {
     transform: translate(-50%, -50%);
     text-align: center;
 
+    @include breakpoint (md) {
+        position: relative;
+        transform: none;
+        left: auto;
+        top: auto;
+    }
+
     h1, h2 {
         margin: 0;
     }
@@ -371,10 +438,22 @@ footer {
     h1 {
         color: #fff;
         font-weight: 900;
-        font-size: 5em;
+        font-size: 4em;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         line-height: 0.9em;
+
+        @include breakpoint (xs) {
+            font-size: 1.5em;
+        }
+
+        @include breakpoint (sm) {
+            font-size: 2em;
+        }
+
+        @include breakpoint (md) {
+            font-size: 3em;
+        }
     }
 
     h2 {
@@ -382,6 +461,25 @@ footer {
         font-weight: 500;
         font-size: 2.25em;
         margin-bottom: 15px;
+
+        @include breakpoint (xs) {
+            font-size: 1em;
+        }
+
+        @include breakpoint (sm) {
+            font-size: 1.3em;
+        }
+
+        @include breakpoint (md) {
+            font-size: 1.75em;
+        }
+    }
+
+    a {
+        
+        @include breakpoint (sm) {
+            padding: 10px 20px;
+        }
     }
 }
 
@@ -423,6 +521,9 @@ footer {
         animation-iteration-count: infinite;
         padding-top: 5px;;
     }
+    @include breakpoint (sm) {
+        display: none;
+    }
 }
 
 @keyframes pulsate {
@@ -449,6 +550,10 @@ footer {
     padding: 75px 15px;
     border-bottom: 1px solid $border;
 
+    @include breakpoint (md) {
+        text-align: center;
+    }
+
     h2 {
         color: $heading;
     }
@@ -456,6 +561,10 @@ footer {
     p {
         color: $text;
         margin: 0;
+
+        @include breakpoint (md) {
+            text-align: left;
+        }
     }
 }
 
@@ -491,6 +600,10 @@ footer {
         width: 3px;
         background: $base-color;
         z-index: 0;
+
+        @include breakpoint (sm) {
+            left: 23px;
+        }
     }
 
     &:after {
@@ -502,6 +615,10 @@ footer {
         background: linear-gradient(to bottom, $base-color, rgba($base-color, 0));
         top: 100%;
         left: 303px;
+
+        @include breakpoint (sm) {
+            left: 23px;
+        }
     }
 }
 
@@ -512,6 +629,10 @@ footer {
     padding: 15px;
     border-radius: 3px;
     text-align: left;
+
+    @include breakpoint (sm) {
+        margin-left: 70px;
+    }
 
     h3 {
         font-size: 1.5em;
@@ -538,7 +659,7 @@ footer {
 .vtimeline-point {
     position: relative;
     display: block;
-    vertical-align: top;
+    // vertical-align: top;
     margin-bottom: 30px;
 }
 
@@ -552,6 +673,10 @@ footer {
     float: left;
     z-index: 99;
     margin-left: 280px;
+
+    @include breakpoint (sm) {
+        margin-left: 0;
+    }
 
     i {
         display: block;
@@ -568,6 +693,15 @@ footer {
     top: 10px;
     font-weight: 300;
     color: #374054;
+
+    @include breakpoint (sm) {
+        width: auto;
+        text-align: left;
+        position: relative;
+        margin-bottom: 15px;
+        display: block;
+        margin-left: 70px;
+    }
 }
 
 /*
@@ -593,6 +727,12 @@ footer {
     padding: 15px;
     border: 1px solid $border;
     text-align: left;
+
+    h3, span {
+        @include breakpoint (sm) {
+            float: none;
+        }
+    }
 
     h3 {
         font-weight: 500;
@@ -652,6 +792,10 @@ footer {
 
 .project-image {
     float: left;
+
+    @include breakpoint (sm) {
+        display: none;
+    }
 }
 
 .project-info {
@@ -660,6 +804,14 @@ footer {
     transform: translateY(-50%);
     margin-left: 300px;
     padding: 15px;
+
+    @include breakpoint (sm) {
+        position: relative;
+        margin: 0;
+        padding: 30px 15px;
+        top: auto;
+        transform: none;
+    }
 
     h3 {
         font-size: 1.5em;
@@ -793,6 +945,30 @@ footer {
     ---------------------------------------
 */
 
+.optional-section-block {
+    .courses-completed, .courses-progress {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        .course {
+            background-repeat: no-repeat;
+            background-size: 70px;
+            background-position: center;
+            min-height: 90px;
+            width: 33.3%;
+        }
+    }
+}
+
+
+/*
+    ---------------------------------------
+    ----- 11. Optional Section Styles -----
+    ---------------------------------------
+*/
+
 .optional-section {
     padding: 50px 15px;
     text-align: center;
@@ -836,166 +1012,83 @@ footer {
 }
 
 /*
-    -----------------------------
-    ----- 12. Media Queries -----
-    -----------------------------
+    -------------------------------
+    ----- 13. Profile Image -----
+    -------------------------------
 */
 
-// Collapse timeline
-@media only screen and (max-width: 750px) {
-
-    #experience-timeline {
-        &:before, &:after {
-            left: 23px;
-        }
-
+#profile-image {    
+    position: relative;
+    justify-content: center;
+    display: none;
+    @include breakpoint (sm) {
+        display: flex;
     }
+    .profile-img {
+        border-radius: 50% 50%;
+        height: 100px;
+        position: absolute;
+        top: -50px;
+        width: 100px;
+        z-index: 1;
+    }
+}
 
-    .vtimeline-date {
-        width: auto;
-        text-align: left;
+/*
+    -------------------------------
+    ----- 14. Burger Menu ---------
+    -------------------------------
+*/
+
+#burger-menu {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    right: 0;
+    padding: 15px;
+    @include breakpoint (sm) {
+        display: flex;
+    }
+    .burger-menu-container {
         position: relative;
-        margin-bottom: 15px;
-        display: block;
-        margin-left: 70px;
+        height: 30px;
+        width: 30px;
+        transition: transform 100ms ease-in; 
+        .burger-item {
+            background-color: #313131;
+            height: 3px;
+            position: absolute;
+            width: 30px;
+            transform: rotate(0);
+            transition: top 400ms ease-out, transform 300ms ease-in 200ms, opacity 200ms ease-out;
+    
+            &:nth-child(1) {
+                top: 0;
+            }
+            &:nth-child(2) {
+                top: 10px;
+            }
+            &:nth-child(3) {
+                top: 20px;
+            }
+        }
+        &.active {
+            transform: rotate(90deg);
+            .burger-item {
+                // transition: transform 100ms ease-in 500ms;
+                &:nth-child(1){
+                    top: 10px;
+                    transform: rotate(45deg);
+                }
+                &:nth-child(2){
+                    top: 10px;
+                    transform: rotate(-45deg);
+                }
+                &:nth-child(3){
+                    opacity: 0;
+                }
+            }
+        }
     }
-
-    .vtimeline-icon {
-        margin-left: 0;
-    }
-
-    .vtimeline-content {
-        margin-left: 70px;
-    }
-
 }
 
-// Medium Devices
-@media only screen and (max-width : 992px) {
-
-    #lead {
-        height: auto;
-        min-height: auto;
-        max-height: auto;
-        padding: 100px 15px;
-    }
-
-    #lead-content {
-        position: relative;
-        transform: none;
-        left: auto;
-        top: auto;
-
-        h1 {
-            font-size: 3em;
-        }
-
-        h2 {
-            font-size: 1.75em;
-        }
-    }
-
-    #about {
-        text-align: center;
-
-        p {
-            text-align: left;
-        }
-    }
-
-}
-
-// Small Devices
-@media only screen and (max-width : 768px) {
-
-    header {
-        position: fixed;
-        display: none;
-        z-index: 999;
-        animation: none;
-        bottom: 0;
-        height: 100%;
-    }
-
-    #mobile-menu-open, #mobile-menu-close {
-        display: block;
-    }
-
-    #menu {
-        height: 100%;
-        overflow-y: auto;
-        box-shadow: none;
-        border-radius: 0;
-        width: 100%;
-
-        li {
-            display: block;
-            margin-bottom: 10px;
-        }
-    }
-
-    #lead-content {
-        h1 {
-            font-size: 2em;
-        }
-
-        h2 {
-            font-size: 1.3em;
-        }
-
-        a {
-            padding: 10px 20px;
-        }
-    }
-
-    #lead-down {
-        display: none;
-    }
-
-    .education-block {
-        h3, span {
-            float: none;
-        }
-    }
-
-    .project-image {
-        display: none;
-    }
-
-    .project-info {
-        position: relative;
-        margin: 0;
-        padding: 30px 15px;
-        top: auto;
-        transform: none;
-    }
-
-    footer {
-        text-align: center;
-    }
-
-    .social {
-        text-align: center;
-    }
-
-}
-
-// Extra Small Devices
-@media only screen and (max-width : 480px) {
-
-    #lead-content {
-        h1 {
-            font-size: 1.5em;
-        }
-
-        h2 {
-            font-size: 1em;
-        }
-
-        a {
-            font-size: 0.9em;
-            padding: 5px 10px;
-        }
-    }
-
-}
