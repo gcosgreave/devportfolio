@@ -123,7 +123,7 @@ var gcui = {
     getCourses: function () {
 
         $.ajax({
-            url: 'https://www.codeschool.com/users/gcosgreave.jsonsdvsv',
+            url: 'https://www.codeschool.com/users/gcosgreave.json',
             dataType: 'jsonp',
             success: function(data) {
                 completedCourses(data.courses.completed)
