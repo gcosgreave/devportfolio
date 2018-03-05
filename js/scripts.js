@@ -134,13 +134,15 @@ var gcui = {
         function completedCourses(courses){            
             for (var i = 0; i < courses.length; i++){
                 var coursesBadge = courses[i].badge;
-                $('<li />').addClass('course').appendTo('.courses-completed').css('background-image', 'url(' + coursesBadge + ')')
+                var coursesAlt = courses[i].title;
+                $('<li />').addClass('course').appendTo('.courses-completed').css('background-image', 'url(' + coursesBadge + ')').attr("alt", coursesAlt).attr("title", coursesAlt)
             }
         }
         function progressCourses(courses){
             for (var i = 0; i < courses.length; i++) {
                 var inProgressCourseBadge = courses[i].badge;
-                $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')')
+                var coursesAlt = courses[i].title;
+                $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')').attr("alt", coursesAlt).attr("title", coursesAlt)
             }
         }
     }
