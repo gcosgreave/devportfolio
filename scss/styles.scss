@@ -209,8 +209,7 @@ header {
 
 .menu-list {
     @include breakpoint (sm) {
-        height: 100%;
-        overflow-y: auto;
+        height: 100%;        
         box-shadow: none;
         border-radius: 0;
         width: 100%;
@@ -1043,15 +1042,18 @@ footer {
 #burger-menu {
     display: none;
     position: absolute;
-    z-index: 9999;
-    right: 0;
-    padding: 15px;
+    z-index: 1000;
+    right: 20px;
+    top: 10px;
+    padding: 10px;
     @include breakpoint (sm) {
-        display: flex;
+        background: #fff;
+        border-radius: 4px;
+        display: none;
     }
     .burger-menu-container {
         position: relative;
-        height: 30px;
+        height: 24px;
         width: 30px;
         transition: transform 100ms ease-in; 
         .burger-item {
@@ -1074,8 +1076,7 @@ footer {
         }
         &.active {
             transform: rotate(90deg);
-            .burger-item {
-                // transition: transform 100ms ease-in 500ms;
+            .burger-item {                
                 &:nth-child(1){
                     top: 10px;
                     transform: rotate(45deg);

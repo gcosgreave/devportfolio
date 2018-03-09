@@ -95,6 +95,16 @@ var gcui = {
             }, duration * index);
         }
 
+        $('.menu-item').click(function () {
+            if ($(this).hasClass('menu-item--active')) {
+                $('header').removeClass('active');
+                iterateAddClass(element, 'menu-item--active', index, 150);
+            } else {
+                $('header').addClass('active');
+                iterateAddClass(element, 'menu-item--active', index, 150);
+            }
+        });
+
         // Toggle mobile menu
         $(menuContainer).click(function() {
             var menuItems = $('.menu-item');
@@ -110,7 +120,14 @@ var gcui = {
                 });
             }
         });
-    }, 
+
+        console.log('------------------------------------');
+        console.log('run');
+        console.log('------------------------------------');
+        
+        
+
+    },
     projects: function() {
         // Load additional projects
         $('#view-more-projects').click(function(e){
