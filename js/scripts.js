@@ -9,15 +9,9 @@ Issues: https://github.com/RyanFitzgerald/devportfolio-template/issues
 Description: This file contains all the scripts associated with the single-page
 portfolio website.
 */
-var gcui = {
 
+var gcui = {
     init: function () {
-        // setTimeout(function(){
-        //     console.log('------------------------------------');
-        //     console.log('sdv');
-        //     console.log('------------------------------------');
-        // }, 1000);
-        // Remove no-js class
         $('html').removeClass('no-js');
         gcui.header();
         gcui.timeline();
@@ -121,12 +115,6 @@ var gcui = {
             }
         });
 
-        console.log('------------------------------------');
-        console.log('run');
-        console.log('------------------------------------');
-        
-        
-
     },
     projects: function() {
         // Load additional projects
@@ -139,16 +127,25 @@ var gcui = {
     },
     getCourses: function () {
 
-        $.ajax({
-            url: 'https://www.codeschool.com/users/gcosgreave.json',
+        var courseURL = "https://www.codeschool.com/users/gcosgreave.json?callback=?";
+
+        $.jsonp({
+            url: courseURL,
             dataType: 'jsonp',
-            success: function(data) {
-                completedCourses(data.courses.completed)
-                progressCourses(data.courses.in_progress)                
-            },
+            success: getCourseData,
+            error: dataFailed,
         });
 
-        function completedCourses(courses){            
+        function getCourseData (data, status){
+            completedCourses(data.courses.completed);
+            progressCourses(data.courses.in_progress);
+        }
+
+        function dataFailed (){
+            $('.course-text').replaceWith("<p>Sorry the courses don't seem to currently be loading.</p>")
+        }
+
+        function completedCourses(courses){
             for (var i = 0; i < courses.length; i++){
                 var coursesBadge = courses[i].badge;
                 var coursesAlt = courses[i].title;
@@ -159,7 +156,7 @@ var gcui = {
             for (var i = 0; i < courses.length; i++) {
                 var inProgressCourseBadge = courses[i].badge;
                 var coursesAlt = courses[i].title;
-                $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')').attr("alt", coursesAlt).attr("title", coursesAlt)
+                $('<li />').addClass('course').appendTo('.courses-progress').css('background-image', 'url(' + inProgressCourseBadge + ')').attr("alt", coursesAlt).attr("title", coursesAlt);
             }
         }
     }
