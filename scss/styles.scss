@@ -954,10 +954,11 @@ footer {
         .course {
             background-repeat: no-repeat;
             background-position: center;
+            background-size: 90px;
+            min-height: 110px;
+            width: 25%;
             @include breakpoint (md) {
-                background-size: 90px;
-                min-height: 110px;
-                width: 25%;
+                
             }
             @include breakpoint (xs) {
                 background-size: 70px;
